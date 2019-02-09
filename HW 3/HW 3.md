@@ -2,6 +2,8 @@
 
 Lingfeng Zhao
 
+LZ1973
+
 ## 1. 
 
 ### (a)
@@ -105,7 +107,30 @@ $$
 
 ### (c)
 
+For $(1/T)A^TA​$, it is easy to get the result that:
+$$
+(1/T)A^TA = \begin{bmatrix}
+R_{yy}(0)&R_{yy}(1)&R_{yy}(2)&\dots& R_{yy}(M-1)&R_{xy}(-1)&R_{xy}(0)&R_{xy}(1)&\dots& R_{xy}(N-1) \\
+R_{yy}(1)&R_{yy}(0)&R_{yy}(1)&\dots& R_{yy}(M-2)&R_{xy}(-2)&R_{xy}(-1)&R_{xy}(-2)&\dots& R_{xy}(N-2) \\
+R_{yy}(2)&R_{yy}(1)&R_{yy}(0)&\dots& R_{yy}(M-3)&R_{xy}(-3)&R_{xy}(-2)&R_{xy}(-1)&\dots& R_{xy}(N-3) \\
+\vdots&\vdots&\vdots&\vdots&\vdots&\vdots&\vdots&\vdots&\ddots&\vdots \\
+R_{xy}(N-1)&R_{xy}(N-2)&R_{xy}(N-3)&\dots&R_{xy}(-1)&R_{xx}(N)&R_{xx}(N-1)&\dots&\dots&R_{xx}(0)
 
+\end{bmatrix}
+$$
+It is, for element $m_{ij}​$ in $(1/T)A^TA​$ 
+$$
+m{ij} = \begin{cases}
+R_{yy}(|{i-j}|) & \mbox{if } 0\le i,j\leq M\\
+R_{xy}(i - |j - M|) & \mbox{if } 0\le i \le M \text{ and } j>M \\
+               & \text{or }     0\le j\le M \text{ and } i>M   \\
+R_{xx}(|{i-j}|) & \mbox{if } M < i,j\\
+\end{cases}
+$$
+For $(1/T)A^Ty$
+$$
+(1/T)A^Ty = [ R_{yy}(1),R_{yy}(2),R_{yy}(3),\dots,R_{yy}(M-1),R_{xy}(0),R_{xy}(1),\dots,R_{xy}(N) ]^T
+$$
 
 ## 6.
 
@@ -129,8 +154,4 @@ m,d = y.shape
 
 dist = np.sum(np.square(np.einsum("dm,ln->nmd",y.T, np.ones((1,n))) - np.einsum("ml,nd->nmd", np.ones((m,1)), x)), axis=2)
 ```
-
-
-
- 1,3,4,6
 
