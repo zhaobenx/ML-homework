@@ -12,7 +12,7 @@ Note that $y = 0, 1$, hence
 $$
 P(y =0|\mathbf{x}) = 1 - P(y = 1|\mathbf{x}) = 1 - \frac{1}{1+e^{-z}} = \frac{e^{-z}}{1+e^{-z}}
 $$
-For $P(y =1|\mathbf{x})\gt P(y =0|\mathbf{x})​$, we get
+For $P(y =1|\mathbf{x})\gt P(y =0|\mathbf{x})$, we get
 $$
 \begin{align}
      &\frac{1}{1+e^{-z}}-\frac{e^{-z}}{1+e^{-z}} > 0 \\
