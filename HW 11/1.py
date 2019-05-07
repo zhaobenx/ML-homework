@@ -7,14 +7,14 @@ mean = X.mean(axis=0)
 print(mean)
 
 # %%
-Q = np.cov((X - mean))
+Q = np.cov(X.T, bias=True)
 print(X - mean)
 print(Q)
 
 # %%
-eigval, eigvec = np.linalg.eig(Q)
-print(val)
-print(vec)
+eigval, eigvec = np.linalg.eigh(Q)
+print(eigval)
+print(eigvec)
 
 # %%
 # print(np.dot(np.linalg.inv(vec), vec))
@@ -28,7 +28,7 @@ rec = np.dot(a, eigvec.T) + mean
 print(rec)
 
 # %%
-two_large_eigvec = eigvec[:, 0:2]  # first two eignvalues are the biggest
+two_large_eigvec = eigvec[:, 1:]  # last two eignvalues are the biggest
 a2 = np.dot(X - mean, two_large_eigvec)
 rec2 = np.dot(a2, two_large_eigvec.T) + mean
 print(rec2)
